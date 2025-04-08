@@ -13,7 +13,7 @@ function TaskDetailsModal({ task, hide, onTaskCompletion }) {
   useEffect(() => {
     if (task?.id) {
       axios
-        .get(`${process.env.REACT_APP_ENDPOINT_URL}/get-task-list/${task.id}`)
+        .get(`${apiUrl}/get-task-list/${task.id}`)
         .then((response) => {
           if (Array.isArray(response.data.list)) {
             setList(response.data.list);
@@ -43,7 +43,7 @@ function TaskDetailsModal({ task, hide, onTaskCompletion }) {
     };
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_ENDPOINT_URL}/update-status`, payload);
+      const response = await axios.post(`${apiUrl}/update-status`, payload);
 
       if (response.data.success) {
         const updatedList = list.map((listItem, i) =>
@@ -65,7 +65,7 @@ function TaskDetailsModal({ task, hide, onTaskCompletion }) {
     if (!newItem.trim()) return;
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_ENDPOINT_URL}/add-list-item`, {
+      const response = await axios.post(`${apiUrl}/add-list-item`, {
         title_id: task.id,
         list_desc: newItem,
       });
@@ -90,7 +90,7 @@ function TaskDetailsModal({ task, hide, onTaskCompletion }) {
     }
 
     try {
-      const response = await axios.delete(`${process.env.REACT_APP_ENDPOINT_URL}/delete-list-item/${item.id}`);
+      const response = await axios.delete(`${apiUrl}/delete-list-item/${item.id}`);
 
       if (response.data.success) {
         const updatedList = list.filter((_, i) => i !== index);
@@ -113,7 +113,7 @@ function TaskDetailsModal({ task, hide, onTaskCompletion }) {
 
   const saveEditedTitle = async () => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_ENDPOINT_URL}/update-task-title`, {
+      const response = await axios.post(`${apiUrl}/update-task-title`, {
         id: task.id,
         title: editedTitle
       });
@@ -136,7 +136,7 @@ function TaskDetailsModal({ task, hide, onTaskCompletion }) {
 
   const saveEditedItem = async () => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_ENDPOINT_URL}/update-list-item`, {
+      const response = await axios.post(`${apiUrl}/update-list-item`, {
         id: editingItemId,
         list_desc: editedItemText
       });

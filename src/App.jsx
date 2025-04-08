@@ -5,6 +5,8 @@ import axios from "axios";
 function App() {
   const navigate = useNavigate();
 
+  const apiUrl = import.meta.env.VITE_ENDPOINT_URL;
+
   // Login states
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +27,7 @@ function App() {
     }
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_ENDPOINT_URL}/check-user`, {
+      const response = await axios.post(`${apiUrl}/check-user`, {
         username,
         password,
       });
@@ -49,7 +51,7 @@ function App() {
     }
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_ENDPOINT_URL}/add-user`, {
+      const response = await axios.post(`${apiUrl}/add-user`, {
         username,
         password,
         fname,

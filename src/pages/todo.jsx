@@ -14,7 +14,7 @@ function Todo() {
   // Fetch tasks from the database
   const getTitles = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_ENDPOINT_URL}/get-titles`);
+      const response = await axios.get(`${apiUrl}/get-titles`);
       if (response.data.titles) {
         setTitles(
           response.data.titles.map((task) => ({
@@ -35,7 +35,7 @@ function Todo() {
   // Delete a task
   const deleteTask = async (taskId) => {
     try {
-      const { data } = await axios.post(`${process.env.REACT_APP_ENDPOINT_URL}/delete-to-do`, {
+      const { data } = await axios.post(`${apiUrl}/delete-to-do`, {
         title_id: taskId,
       });
 
@@ -54,7 +54,7 @@ function Todo() {
   // Handle task completion
   const handleTaskCompletion = async (taskId, isCompleted) => {
     try {
-      await axios.post(`${process.env.ENDPOINT_URL}/update-status`, {
+      await axios.post(`${apiUrl}/update-status`, {
         title_id: taskId,
         status: isCompleted ? 1 : 0, // Convert boolean to 1 or 0 for the database
       });
