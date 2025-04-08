@@ -19,7 +19,7 @@ function SignUp() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/add-user", {
+      const response = await axios.post(`${apiUrl}/add-user`, {
         username,
         password,
         fname,
