@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-
 function TaskDetailsModal({ task, hide, onTaskCompletion }) {
   const [list, setList] = useState([]);
   const [newItem, setNewItem] = useState("");
