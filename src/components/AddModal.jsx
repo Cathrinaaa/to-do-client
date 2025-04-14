@@ -5,6 +5,8 @@ export default function AddModal({ hide, refreshTasks }) {
   const [tasks, setTasks] = useState([""]);
   const [message, setMessage] = useState("");
 
+  const apiUrl = import.meta.env.VITE_ENDPOINT_URL;
+
   const addTask = () => setTasks([...tasks, ""]);
   const removeTask = (index) => setTasks(tasks.filter((_, i) => i !== index));
 
@@ -41,7 +43,7 @@ export default function AddModal({ hide, refreshTasks }) {
     };
   
     try {
-      const response = await fetch("http://localhost:3000/add-to-do", {
+      const response = await fetch(`${apiUrl}/add-to-do`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
