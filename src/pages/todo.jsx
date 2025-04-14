@@ -111,7 +111,8 @@ function Todo() {
       </div>
 
       {/* Ongoing and Done Sections */}
-      <div className="w-full flex justify-center space-x-6">
+      <div className="w-full flex flex-col md:flex-row justify-center md:space-x-6 space-y-6 md:space-y-0">
+
         {/* Ongoing Section */}
         <div className="w-1/3 bg-white shadow-2xl rounded-lg p-6 border-3 border-purple-700">
           <h2 className="text-xl font-semibold text-purple-700 mb-4 flex items-center">
