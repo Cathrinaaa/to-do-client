@@ -11,6 +11,8 @@ function Todo() {
   const navigate = useNavigate();
   const [editTask, setEditTask] = useState(null);
 
+  const apiUrl = import.meta.env.VITE_ENDPOINT_URL;
+
   // Fetch tasks from the database
   const getTitles = async () => {
     try {

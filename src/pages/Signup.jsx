@@ -12,6 +12,8 @@ function SignUp() {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
+  const apiUrl = import.meta.env.VITE_ENDPOINT_URL;
+
   const handleSignUp = async () => {
     if (!username || !password || !fname || !lname) {
       setError("All fields are required");

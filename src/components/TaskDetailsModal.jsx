@@ -9,6 +9,8 @@ function TaskDetailsModal({ task, hide, onTaskCompletion }) {
   const [editingItemId, setEditingItemId] = useState(null);
   const [editedItemText, setEditedItemText] = useState("");
 
+  const apiUrl = import.meta.env.VITE_ENDPOINT_URL;
+
   useEffect(() => {
     if (task?.id) {
       axios
